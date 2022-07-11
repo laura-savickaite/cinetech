@@ -56,4 +56,15 @@ document.addEventListener('DOMContentLoaded', function loaded() {
     }
 
     fetchGenres();
+
+
+    //INSCRIPTION 
+
+    let data = new FormData()
+
+    let login = document.getElementById('login');
+    let pass = document.getElementById('pass');
+    let pass2 = document.getElementById('pass2');
+
+    
 })

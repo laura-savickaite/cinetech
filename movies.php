@@ -9,6 +9,6 @@
     <title>Cinetech</title>
 </head>
 <body>
-    <div id="test"></div>
+    <div id="moviesList"></div>
 </body>
 </html>

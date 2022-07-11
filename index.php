@@ -15,6 +15,8 @@
             <li><a href="">Movies</a></li>
             <div id="test"></div>
             <li><a href="">TV Shows</a></li>
+            <li><a href="inscription.php">Inscription</a></li>
+            <li><a href="connexion.php">Connexion</a></li>
         </ul>
     </nav>
 </body>
