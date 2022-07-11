@@ -66,5 +66,52 @@ document.addEventListener('DOMContentLoaded', function loaded() {
     let pass = document.getElementById('pass');
     let pass2 = document.getElementById('pass2');
 
+    const regexmdp = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/
+
+    let submit = document.getElementById('submit');
+    let error = document.getElementsByClassName('error');
+
+    login.addEventListener('keyup', function(){
+        let loginValue = this.value;
+        if(loginValue === '')
+        {
+            error[0].style.display = 'block'
+            error[0].innerHTML = 'Veuillez rentrer un login';
+            validation = false;
+        }
+        else 
+        {
+            error[0].style.display = 'none'  
+            validation = true; 
+        }
+    })
+
+    pass.addEventListener('focusout', function(){
+        let passValue = this.value;
+
+        const find = passValue.match(regexmdp);
+
+        if(passValue === '')
+        {
+            error[1].style.display = 'block'
+            error[1].innerHTML = 'Veuillez rentrer un mot de passe';
+            validation = false;
+        }
+        else 
+        {
+            if(find === null)
+            {
+                error[1].style.display = 'block'
+                error[1].innerHTML = 'Veuillez rentrer un mot de passe valide';
+                validation = false;
+            }
+            else
+            {
+                error[1].style.display = 'none'
+                validation = true; 
+            } 
+        }
+    })
+
     
 })
