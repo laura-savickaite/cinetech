@@ -5,17 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" charset="utf-8"></script>
+    <script src="movies.js" charset="utf-8"></script>
     <title>Cinetech</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>Homepage</li>
-            <li><a href="">Movies</a></li>
-            <div id="test"></div>
-            <li><a href="">TV Shows</a></li>
-        </ul>
-    </nav>
+    <div id="test"></div>
 </body>
 </html>
