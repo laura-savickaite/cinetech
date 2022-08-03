@@ -71,8 +71,11 @@ document.addEventListener('DOMContentLoaded', function loaded() {
     let submit = document.getElementById('submit');
     let error = document.getElementsByClassName('error');
 
+    let validation;
+
     login.addEventListener('keyup', function(){
         let loginValue = this.value;
+
         if(loginValue === '')
         {
             error[0].style.display = 'block'
@@ -81,10 +84,30 @@ document.addEventListener('DOMContentLoaded', function loaded() {
         }
         else 
         {
-            error[0].style.display = 'none'  
-            validation = true; 
+                data.append('login',loginValue)
+
+                fetch('loginValide.php',{
+                    method: 'POST',
+                    body: data
+                })
+                .then ((response) => response.text())
+                .then ((response) => {
+                    console.log(response)
+                    if(response === '0')
+                    {
+                        error[0].style.display = 'block'
+                        error[0].innerHTML = 'Ce login est déjà pris';
+                        validation = false;
+                    }
+                    else 
+                    {
+                        error[0].style.display = 'none'
+                        validation = true; 
+                    }
+                })  
         }
-    })
+
+        })
 
     pass.addEventListener('focusout', function(){
         let passValue = this.value;
@@ -113,5 +136,58 @@ document.addEventListener('DOMContentLoaded', function loaded() {
         }
     })
 
-    
+    pass2.addEventListener('focusout', function(){
+        let pass2Value = this.value;
+        if(pass2Value === '')
+        {
+            error[4].style.display = 'block'
+            error[4].innerHTML = 'Veuillez faire une confirmation de mot de passe';
+            validation = false;
+        }
+        else 
+        {
+            if(pass2Value !== pass.value)
+            {
+                error[4].style.display = 'block'
+                error[4].innerHTML = 'Le mot de passe et sa confirmation ne sont pas les mêmes';
+                validation = false;
+            }
+            else 
+            {
+              error[4].style.display = 'none' 
+              validation = true; 
+              
+            }
+            
+        }
+    })
+
+    submit.addEventListener('click', function(){
+
+        if(validation !== true){
+            console.log('ok');
+        }
+        else
+        {
+            fetch('signin.php',{
+                method: 'POST',
+                body: JSON.stringify({login: login.value, password: pass.value})
+            })
+            .then ((response) => response.text())
+            .then ((response) => {
+                console.log(response)
+                // if(response === '0')
+                // {
+                //     error[2].style.display = 'block'
+                //     error[2].innerHTML = 'Cet email est déjà pris';
+                //     validation = false;
+                // }
+                // else 
+                // {
+                //     error[2].style.display = 'none'
+                // }
+            })
+            .catch((error) => console.log(error)) 
+        }
+     })
 })
