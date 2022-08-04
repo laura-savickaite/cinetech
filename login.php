@@ -2,6 +2,8 @@
 require 'bdd-connect.php';
 require_once 'connexion.php';
 
+session_start();
+
 if(isset($_POST['connexion'])){
 
     if(! empty ($_POST['login'])){
@@ -22,7 +24,7 @@ if(isset($_POST['connexion'])){
                     'password' => $result['password'],
                 ];
                 // var_dump($_SESSION['user']);
-                // header ('location: index');
+                header ('location: index.php');
             }
             else {
                 echo "L'identifiant ou le mot de passe sont erronés.";

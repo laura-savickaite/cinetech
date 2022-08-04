@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +19,10 @@
             <li><a href="">TV Shows</a></li>
             <li><a href="inscription.php">Inscription</a></li>
             <li><a href="connexion.php">Connexion</a></li>
+            <li><a href="favoris.php">Favoris</a></li>
         </ul>
     </nav>
+
+    <?php var_dump ($_SESSION['user']) ?>
 </body>
 </html>

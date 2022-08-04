@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +11,15 @@
     <title>Cinetech</title>
 </head>
 <body>
+    <?php var_dump($_SESSION['user']) ?>
     <div id="truc"></div>
 
+    <form action="" method="post">
+        <input id="movieID" name="movieID" type="hidden" value="">
+        <button id='favoris' name="fave">Favoris</button> 
+    </form>
+
+    
     <div id="similar"></div>
 </body>
 </html>

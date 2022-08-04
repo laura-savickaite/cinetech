@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function loaded() {
 
                 let truc = document.getElementById("truc");
 
+                let getMovieID = response.id;
                 let getMovieTitle = response.original_title;
                 let getMoviePoster = response.backdrop_path;
                 let getMovieOverview = response.overview;
@@ -98,6 +99,9 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                     vote.classList.add("vote");
                     vote.innerHTML = getVote;
                     truc.appendChild(vote)
+
+                let inputHidden = document.getElementById("movieID");
+                inputHidden = inputHidden.setAttribute("value", getMovieID);
                 
                 // console.log(getMovieTitle);
             })
